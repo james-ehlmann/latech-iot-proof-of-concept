@@ -122,7 +122,7 @@ namespace proof_of_concept.Controllers
             return "value";
         }
 
-        // POST api/values
+        // GET api/values
         public requestStruct Request()
         {
             requestStruct r = new requestStruct();
