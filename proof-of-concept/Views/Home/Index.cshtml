@@ -19,3 +19,19 @@
         <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
     </div>
 </div>
+<div class="row">
+    <button onclick="testRestService();"> This is the test button </button>
+    <script type="text/javascript">
+
+        function testRestService(){
+            var d = '{"id": 1, "password": "yolo", "data": "swaggins"}';
+                $.ajax({
+		        contentType: "text/json",
+		        url: "http://localhost:51186/api/Entry/AddData",
+		        data: d,
+		        method: 'POST'
+	        });
+        }
+
+    </script>
+</div>

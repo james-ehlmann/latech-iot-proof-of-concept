@@ -1,13 +1,32 @@
 What I've done so far / What you need to do to get this app running for yourself:
 
+You'll need to install:
+
+git bash
+
+visual studio for asp.net / azure / sql (2017 is what I used)
+
+SSMS (latest? I think that I used the latest...) 
+sql server express. (2016 is what I used) http://stackoverflow.com/questions/360141/how-to-connect-to-local-instance-of-sql-server-2008-express
+learn how to register server groups, it'll make debugging and using this 100% easier. 
+
 1. signed up for azure free trial (30 days or $200) (much trial and error, not really replicatable)
 2. create azure webapp + database (for asp.net) it's actually pretty easy to do.
 3. Connect an azure web app to github so that when I push my app goes there 
 4. Connected to the transact sql database with ssms, have to remember to add firewall rule to db, 'add client ip' just werked for me.
 5. create database table structure with /db/create.sql
 6. run test inserts just to be sure /db/insert.sql
+7. All of the controllers for the api are in /controllers and extend (:) ApiController in c#
+8. build dummy client app in python for proof of concept. (pretty easy muh dude.) 
+-- TODO
+9. secure api (with https & rest preferably)
+10. Any more luxury methods that we might need that are not barebones proof of concept... 
 
-TODO
-7. get api to use database (asp.net connect to and use database.)
-8. secure api (with https & rest preferably)
-9. build dummy client app in python for proof of concept. (pretty easy muh dude.) 
+
+local:
+asp.net can deploy locally with visual studio
+connecting to sql server require configuring sql server to allow sql authentication on local
+this is done in the sql server configuration manager. 
+create a database called collected_data (that was my database name.)
+set a user up to connect to it called iot with password iot (also give this user sysadmin, not best practice but everyone who isn't a sysadmin does this for mssql...) 
+also enable tcp connections through sql server configuration manager for sql express

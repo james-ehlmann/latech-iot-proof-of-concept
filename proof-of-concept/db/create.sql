@@ -5,7 +5,7 @@ CREATE SEQUENCE devices_sequence
 
 -- database create script
 create table devices(
-	id int primary key not null default next value for devices_sequence,
+	id int IDENTITY(1, 1) primary key not null,
 	password varchar(25) not null,
 	created timestamp not null,
 )
@@ -16,7 +16,7 @@ CREATE SEQUENCE entries_sequence
   INCREMENT BY 1;
 
 create table entries(
-	id int primary key not null default next value for entries_sequence,
+	id int IDENTITY(1, 1) primary key not null,
 	device int not null,
 	data varchar(25) not null,
 	happened timestamp not null,
