@@ -1,8 +1,3 @@
-
-CREATE SEQUENCE devices_sequence
-  START WITH 1
-  INCREMENT BY 1;
-
 -- database create script
 create table devices(
 	id int IDENTITY(1, 1) primary key not null,
@@ -10,15 +5,10 @@ create table devices(
 	created timestamp not null,
 )
 
-
-CREATE SEQUENCE entries_sequence
-  START WITH 1
-  INCREMENT BY 1;
-
 create table entries(
 	id int IDENTITY(1, 1) primary key not null,
 	device int not null,
-	data varchar(25) not null,
+	data varchar(300) not null,
 	happened timestamp not null,
 	FOREIGN KEY (device)
       REFERENCES devices(id)
