@@ -4,9 +4,10 @@ What I've done so far:
 2. create azure webapp + database (for asp.net)
 3. Connect an azure web app to github so that when I push my app goes there
 4. Connected to the mssql database with ssms, have to remember to add firewall rule to db, 'add client ip' just werked for me.
+5. create database table structure with /db/create.sql
+6. run test inserts just to be sure /db/insert.sql
 
 TODO
-5. create database table structure
-6. get api to use database (asp.net connect to and use database.)
-7. secure api (with https & rest preferably)
-8. build dummy client app in python for proof of concept. (pretty easy muh dude.) 
+7. get api to use database (asp.net connect to and use database.)
+8. secure api (with https & rest preferably)
+9. build dummy client app in python for proof of concept. (pretty easy muh dude.) 

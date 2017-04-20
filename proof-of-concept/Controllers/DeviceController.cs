@@ -123,6 +123,7 @@ namespace proof_of_concept.Controllers
         }
 
         // GET api/values
+        [HttpGet]
         public requestStruct Request()
         {
             requestStruct r = new requestStruct();
