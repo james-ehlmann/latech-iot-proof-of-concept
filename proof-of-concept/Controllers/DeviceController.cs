@@ -128,7 +128,7 @@ namespace proof_of_concept.Controllers
         {
             requestStruct r = new requestStruct();
             String password = generateRandomString();
-            object id = executeScalar("insert into devices (password) values '" + password + "'", new Dictionary<string, object>());
+            object id = executeScalar("insert into devices (password) values ('" + password + "')", new Dictionary<string, object>());
             r.password = password;
             r.id = (int)id;
 

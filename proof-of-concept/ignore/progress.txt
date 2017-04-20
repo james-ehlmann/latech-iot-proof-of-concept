@@ -1,9 +1,9 @@
-What I've done so far:
+What I've done so far / What you need to do to get this app running for yourself:
 
 1. signed up for azure free trial (30 days or $200) (much trial and error, not really replicatable)
-2. create azure webapp + database (for asp.net)
-3. Connect an azure web app to github so that when I push my app goes there
-4. Connected to the mssql database with ssms, have to remember to add firewall rule to db, 'add client ip' just werked for me.
+2. create azure webapp + database (for asp.net) it's actually pretty easy to do.
+3. Connect an azure web app to github so that when I push my app goes there 
+4. Connected to the transact sql database with ssms, have to remember to add firewall rule to db, 'add client ip' just werked for me.
 5. create database table structure with /db/create.sql
 6. run test inserts just to be sure /db/insert.sql
 
