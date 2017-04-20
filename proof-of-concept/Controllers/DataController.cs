@@ -16,14 +16,19 @@ namespace proof_of_concept.Controllers
             public String data;
         }
 
-        // GET api/values
+
+        /// <summary>
+        /// Adds Data to the centralized hub anonomized with your anonymous id and password. 
+        /// If the id and password do not match an existing case then it still looks like a correct post, that way
+        /// no fake data will be entered, and no ones data will be manipulated by an outside source. 
+        /// </summary>
         [HttpPost]
         public void AddData(postStruct p)
         {
             
             String password = p.password;
             int id = p.id;
-            System.Diagnostics.Debug.WriteLine("password: " + password + "\nid: " + id.ToString());
+            // System.Diagnostics.Debug.WriteLine("password: " + password + "\nid: " + id.ToString());
             object storedPassword = DBHelper.ExecuteScalar("select password from devices where id = " + id.ToString(), new Dictionary<string, object>());
             if(password.Equals((String)storedPassword))
             {

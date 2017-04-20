@@ -2,6 +2,10 @@ import requests
 import time
 import sys
 
+# Response 204 means that it doesn't need to justify us with a response
+# Response 400 means that our request was bad
+# Response 415 means that our response wasn't even the correct type of data.
+
 if '-h' in sys.argv or '--help' in sys.argv or len(sys.argv) < 2:
 	print """
 Usage: pythonbot.py URL_OF_WEBSERVICE

@@ -31,8 +31,13 @@ namespace proof_of_concept.Controllers
             public String password;
             public int id;
         }
-        
-        // GET api/Device/Request
+
+        /// <summary>
+        /// Gets a username and password that can be used to add data to our application. 
+        /// </summary>
+        /// <returns>
+        /// {password:string, id:int}
+        /// </returns>
         [HttpGet]
         public requestStruct Request()
         {

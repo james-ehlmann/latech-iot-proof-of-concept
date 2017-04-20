@@ -11,15 +11,26 @@ sql server express. (2016 is what I used) http://stackoverflow.com/questions/360
 learn how to register server groups, it'll make debugging and using this 100% easier. 
 
 1. signed up for azure free trial (30 days or $200) (much trial and error, not really replicatable)
+
 2. create azure webapp + database (for asp.net) it's actually pretty easy to do.
+There is a create new webapp option, I chose c# with asp.net and a database, with api controllers... 
+
 3. Connect an azure web app to github so that when I push my app goes there 
-4. Connected to the transact sql database with ssms, have to remember to add firewall rule to db, 'add client ip' just werked for me.
+in deployment, there is an option for github, just give it the url. Deployment options also shows when your app has been redeployed & any issues that might arise.
+
+4. Connected to the transact sql database with ssms, you must add firewall rule to db, 'add client ip' or else it will not allow you to connect at all, firewalls amiright?.
+
 5. create database table structure with /db/create.sql
-6. run test inserts just to be sure /db/insert.sql
-7. All of the controllers for the api are in /controllers and extend (:) ApiController in c#
-8. build dummy client app in python for proof of concept. (pretty easy muh dude.) 
--- TODO
+should occur in connection through ssms to azure database that you created, connect to using the connections strings provided by azure. 
+
+6. All of the controllers for the api are in /controllers and extend (:) ApiController in c#
+
+7. build dummy client app in python for proof of concept. (pretty easy muh dude.) 
+
 9. secure api (with https & rest preferably)
+Already is secured by microsoft for us, what bros!
+
+--TODO
 10. Any more luxury methods that we might need that are not barebones proof of concept... 
 
 
