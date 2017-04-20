@@ -36,10 +36,72 @@ namespace proof_of_concept.Controllers
                     {
                         da.Fill(tbl);
                     }
-                    cmd.Dispose();
                     return tbl;
                 }
             }
+        }
+
+        private void executeNonQuery(String query, Dictionary<string, object> parameters) {
+            using (SqlConnection conn = new SqlConnection(Con.ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+
+                    if (parameters != null)
+                    {
+                        foreach (string parameter in parameters.Keys)
+                        {
+                            cmd.Parameters.AddWithValue(parameter, parameters[parameter]);
+                        }
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private object executeScalar(String query, Dictionary<string, object> parameters)
+        {
+            using (SqlConnection conn = new SqlConnection(Con.ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+
+                    if (parameters != null)
+                    {
+                        foreach (string parameter in parameters.Keys)
+                        {
+                            cmd.Parameters.AddWithValue(parameter, parameters[parameter]);
+                        }
+                    }
+                    return cmd.ExecuteScalar();
+                }
+            }
+
+        }
+
+
+        private static String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        private String generateRandomString() {
+
+            char[] stringChars = new char[20];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new String(stringChars);
+        }
+
+        public struct requestStruct {
+            public String password;
+            public int id;
         }
 
         // GET api/values
@@ -61,8 +123,15 @@ namespace proof_of_concept.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public requestStruct Request()
         {
+            requestStruct r = new requestStruct();
+            String password = generateRandomString();
+            object id = executeScalar("insert into devices (password) values '" + password + "'", new Dictionary<string, object>());
+            r.password = password;
+            r.id = (int)id;
+
+            return r;
         }
 
         // PUT api/values/5
