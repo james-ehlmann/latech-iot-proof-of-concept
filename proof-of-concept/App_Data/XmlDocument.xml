@@ -481,11 +481,12 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:proof_of_concept.Controllers.EntryController.AddData(proof_of_concept.Controllers.EntryController.postStruct)">
+        <member name="M:proof_of_concept.Controllers.EntryController.AddData(proof_of_concept.Controllers.EntryController.PostStruct)">
             <summary>
-            Looks up some data by ID.
+            Adds Data to the centralized hub anonomized with your anonymous id and password. 
+            If the id and password do not match an existing case then it still looks like a correct post, that way
+            no fake data will be entered, and no ones data will be manipulated by an outside source. 
             </summary>
-            <param name="id">The ID of the data.</param>
         </member>
         <member name="M:proof_of_concept.Controllers.DeviceController.Request">
             <summary>

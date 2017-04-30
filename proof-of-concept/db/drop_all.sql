@@ -1,7 +1,9 @@
+drop table fridge_day
+
+drop table fitbit_day
+
 drop table entries 
 
-drop sequence entries_sequence
+drop table individual
 
-drop table devices
-
-drop sequence devices_sequence
+drop table device

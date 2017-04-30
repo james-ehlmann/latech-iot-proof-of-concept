@@ -179,6 +179,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\DBHelper.cs" />
+    <Compile Include="Controllers\FitbitController.cs" />
+    <Compile Include="Controllers\FridgeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Global.asax.cs">

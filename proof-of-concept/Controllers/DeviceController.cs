@@ -27,11 +27,6 @@ namespace proof_of_concept.Controllers
             return new String(stringChars);
         }
 
-        public struct requestStruct {
-            public String password;
-            public int id;
-        }
-
         /// <summary>
         /// Gets a username and password that can be used to add data to our application. 
         /// </summary>
@@ -39,11 +34,11 @@ namespace proof_of_concept.Controllers
         /// {password:string, id:int}
         /// </returns>
         [HttpGet]
-        public requestStruct Request()
+        public DBHelper.IdentificationStruct Request()
         {
-            requestStruct r = new requestStruct();
+            DBHelper.IdentificationStruct r = new DBHelper.IdentificationStruct();
             String password = generateRandomString();
-            object id = DBHelper.ExecuteScalar("insert into devices (password) values ('" + password + "'); SELECT CAST(scope_identity() AS int)", new Dictionary<string, object>());
+            object id = DBHelper.ExecuteScalar("insert into device (password) values ('" + password + "'); SELECT CAST(scope_identity() AS int)", new Dictionary<string, object>());
             r.password = password;
             r.id = (int)id;
 

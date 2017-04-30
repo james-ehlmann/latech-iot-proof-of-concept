@@ -12,6 +12,12 @@ namespace proof_of_concept.Controllers
     {
         public static ConnectionStringSettings Con = ConfigurationManager.ConnectionStrings["myDB"];
 
+        public struct IdentificationStruct
+        {
+            public String password;
+            public int id;
+        }
+
         public static DataTable ExecuteQueryTable(string query, Dictionary<string, object> parameters)
         {
             using (SqlConnection conn = new SqlConnection(Con.ConnectionString))
@@ -80,6 +86,23 @@ namespace proof_of_concept.Controllers
                 }
             }
 
+        }
+
+        public static Boolean CheckPasswd(IdentificationStruct id) {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("device", id.id);
+            object storedPassword = DBHelper.ExecuteScalar("select password from device where id =  @device", dic);
+            return id.password.Equals((String)storedPassword);
+        }
+
+        public static void AddUser(IdentificationStruct id, int individual) {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("device", id.id);
+            dic.Add("individual", individual);
+            if (DBHelper.ExecuteScalar("select device + id as dpid from individual where device = @device and id = @individual", dic) == null)
+            {
+                DBHelper.ExecuteNonQuery("insert into individual(device, id) values(@device, @individual)", dic);
+            }
         }
     }
 }
