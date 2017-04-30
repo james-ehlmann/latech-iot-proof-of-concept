@@ -43,13 +43,17 @@ namespace proof_of_concept.Controllers
                 dic.Add("totalMinutesAsleep", d.totalMinutesAsleep);
                 dic.Add("totalSleepRecords", d.totalSleepRecords);
                 dic.Add("totalTimeInBed", d.totalTimeInBed);
-                DBHelper.ExecuteNonQuery("insert into fitbit_day(device, individual, " +
+                // check to see if we already have this instance of the object, else insert it. 
+                if (DBHelper.ExecuteScalar("select device from fitbit_day where device = @device and individual = @individual and happened = @happened", dic) == null)
+                {
+                    DBHelper.ExecuteNonQuery("insert into fitbit_day(device, individual, " +
                     "happened, steps, caloriesOut, totalDistance, " +
                     "elevation, averageHR, totalMinutesAsleep, " +
                     "totalSleepRecords, totalTimeInBed) " +
                     "values(@device, @individual, @happened, @steps, @caloriesOut, " +
                     "@totalDistance, @elevation, @averageHR, @totalMinutesAsleep, " +
                     "@totalSleepRecords, @totalTimeInBed)", dic);
+                }
             }
 
         }

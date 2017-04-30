@@ -28,7 +28,11 @@ namespace proof_of_concept.Controllers
                 dic.Add("individual", d.individual);
                 dic.Add("happened", d.happened);
                 dic.Add("caloriesEaten", d.caloriesEaten);
-                DBHelper.ExecuteNonQuery("insert into fridge_day(device, individual, happened, caloriesEaten) values(@device, @individual, @happened, @caloriesEaten)", dic);
+                // check to see if we already have this instance of the object, else insert it. 
+                if (DBHelper.ExecuteScalar("select device from fridge_day where device = @device and individual = @individual and happened = @happened", dic) == null)
+                {
+                    DBHelper.ExecuteNonQuery("insert into fridge_day(device, individual, happened, caloriesEaten) values(@device, @individual, @happened, @caloriesEaten)", dic);
+                }
 
             }
         }
