@@ -99,6 +99,7 @@ def sendRequest(payload, apiEnd):
 ###############################################################################
 
 # These tables should be imported from somewhere else
+# That means another file, so that they don't clutter our codebase here. 
 # However for this example purpose, they are here.
 class user(Base):
 	__tablename__ = "user"
@@ -215,7 +216,7 @@ fb.totalTimeInBed = random.randint(0, 24 * 60)
 
 john.fitbitdays.append(fb)
 
-# will recreate our object 'john'
+# will not recreate john if he already exists. 
 # because we changed his fridgedays, it will also make sure that exists in the DB. 
 s.add(john) 
 s.commit()
