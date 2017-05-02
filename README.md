@@ -9,21 +9,6 @@ I am sorry if you are picking up this project from a linux / mac only environmen
 * python
 * restful api (json)
 
-the controllers for logic are in /Controllers/
-
-asp.net this web application is deployed via iis, and I used visual studio to make this code
-
-transact sql as the backend, ssms is what I used to connect to it.
-To create the database and drop it easily look in the /db/ folder
-
-Azure this web application was developed with the azure platform in mind, however this can be used in an entirely local manner for development purposes, just remember to change the database on azure when you change it locally.
-
-python is used to test the webservice located in /extra/
-pip install requests will be required to use any of the python there.
-pip install sqlalchemy will be required if you are going to push anything from a local database
-
-all configuration information is stored in Web.config, Web.Debug.config, and Web.Release.Config, however .Debug.config is essentially unused as it was giving me problems
-
 ## Prerequisites
 To set this up locally you need to install the following things:
 * Visual Studio 2017 for ASP.net / Azure (select those packages when installing) 
@@ -61,6 +46,8 @@ By hitting the run button at the top you can run the web application.
 ### Controllers / Endpoints
 * The controller logic is stored in /Controllers/ this follows the basic api model shown in any of the controllers (look at the code)
 * Most of the hard stuff is controlled by asp.net controller, and structs defined in the controllers are the best way to automatically accept the json
-* The endpoint is configured to only accept json, if you want to disable this go to: / 
+* The endpoint is configured to only accept json, if you want to disable this go to:
+* The configuration for the databases is stored in the Web.config file and Web.config.release file.  
 
 ## Pushing to Azure / Setting up a new cloud instance
+* Not written yet. 
