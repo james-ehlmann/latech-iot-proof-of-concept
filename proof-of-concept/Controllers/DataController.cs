@@ -7,8 +7,10 @@ using System.Web.Http;
 
 namespace proof_of_concept.Controllers
 {
+    // EntryController means that this will be mapped on the api as /api/Entry
     public class EntryController : ApiController
     {
+        // Structs and Classes are automatically converted from json by the ApiController
         public struct PostStruct
         {
            public DBHelper.IdentificationStruct id;
